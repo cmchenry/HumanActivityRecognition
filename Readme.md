@@ -12,7 +12,7 @@ This dataset fully embodies the requirements of a tidy dataset:
 1. Each Feature variable is in it's own column.
 2. Each average of the 180 observations is in it's own row.
 3. There is 1 table for the resulting Feature averages.
-4. There was no need for multiple tables, since the data is all of the same type.
+4. There was no need for multiple tables, since the data is all related to the same observations and has the same characteristics.
 5. The table has a row at the top with the variable names.
 6. The variable names are human readable.
 7. The data is in a single file since there is only one table for the tidy dataset. 
