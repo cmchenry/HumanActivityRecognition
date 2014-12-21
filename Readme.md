@@ -8,6 +8,7 @@ The resulting tidy dataset, "tidy_wearable_ordered.txt", represents only the mea
 3. Each feature is in it's own column with a human readable column name.
 
 This dataset fully embodies the key requirements of a tidy dataset:
+
 1. Each Feature variable is in it's own column.
 2. Each average of the 180 observations is in it's own row.
 3. There is 1 table for the resulting feature averages.
@@ -33,6 +34,7 @@ This dataset fully embodies the key requirements of a tidy dataset:
     
 ####Running the Code
 The following are the required steps to run the script:
+
 1. Install Install R 3.1.1 "Sock it to Me"
 2. Install RStudio 0.98.1062
 3. Open the "human-activity-recognition.Rproject"
@@ -41,6 +43,7 @@ The following are the required steps to run the script:
 
 ####Tranformations a Create Tidy Dataset
 The following were the transformations of the source data to the resulting tidy dataset:
+
 1. Loaded and combined source Subject data:
     * subject_test.txt
     * subject_train.txt

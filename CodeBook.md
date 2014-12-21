@@ -1,5 +1,5 @@
 #### Code Book
-This Code Book provides the definitions of the variables in the resulting tidy dataset obtained from the tidy dataset analysis.  The output can be found in the tidy_wearable_ordered.txt dataset file.
+This Code Book provides the definitions of the variables in the resulting tidy dataset obtained from the analysis.  The output can be found in the tidy_wearable_ordered.txt dataset file.
 
 Variable              | Class       | Description
 ----------------------- | --------- | -----------------------------------------------------------
