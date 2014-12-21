@@ -1,4 +1,4 @@
-require(plyr)
+library(plyr)
 ## Load Subject datasets and merge test and training data
 subject_test <- read.table("UCI HAR Dataset/test/subject_test.txt")
 subject_train <- read.table("UCI HAR Dataset/train/subject_train.txt")
@@ -10,7 +10,7 @@ y_test <- read.table("UCI HAR Dataset/test/Y_test.txt")
 y_train <- read.table("UCI HAR Dataset/train/Y_train.txt")
 y <- rbind(y_test, y_train)
 
-## Load Measurement datasets and merge test and training data
+## Load Feature datasets and merge test and training data
 x_test <- read.table("UCI HAR Dataset/test/X_test.txt")
 x_train <- read.table("UCI HAR Dataset/train/X_train.txt")
 x <- rbind(x_test, x_train)
@@ -18,10 +18,19 @@ x <- rbind(x_test, x_train)
 ## Load Feature names dataset and filter out mean and std features
 features <- read.table("UCI HAR Dataset/features.txt",col.names = c("featureCol", "featureName"))
 features_mean_std <- subset(features, grepl("mean\\(\\)|std\\(\\)", features$featureName), drop=T)
+## Make column names human readable
+features_mean_std_names <- gsub("^f", "Freq", 
+                           gsub("^t", "Time",
+                           gsub("mean", "Mean",
+                           gsub("std", "Std",
+                           gsub("\\-{1}", "",
+                           gsub("BodyBody", "Body",
+                           gsub("\\({1}\\){1}", "",
+                                as.vector(features_mean_std[,2]))))))))
 
 ## Use only the mean and std features
 x_mean_std <- x[,as.vector(features_mean_std[,1])]
-x_mean_std_named <- setNames(x_mean_std, as.vector(features_mean_std[,2]))  ## Name the columns
+x_mean_std_named <- setNames(x_mean_std, features_mean_std_names)  ## Name the columns
 
 ## Load the Activity labels and join them with the Activity data
 activity_labels <- read.table("UCI HAR Dataset/activity_labels.txt")
