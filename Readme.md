@@ -1,17 +1,17 @@
 ####Overview
-This repository provides R code for creating a tidy dataset from the "Human Activity Recognition Using Smartphones Dataset".  The "Human Activity Recognition Using Smartphones Dataset" ("source dataset") is a publically available dataset which can be obtained at the following [website](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones).  The dataset is the result of an experiment conducted to capture accelerometer and gyroscope reading from a Samsung Galaxy S II smartphone of 30 volunteer subjects performing six different activities. See References for more details on the source data[1]
+This repository provides R code for creating a tidy dataset from the "Human Activity Recognition Using Smartphones Dataset".  The "Human Activity Recognition Using Smartphones Dataset" ("source data") is a publically available dataset which can be obtained at the following [website](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones).  The dataset is the result of an experiment conducted to capture accelerometer and gyroscope reading from a Samsung Galaxy S II smartphone of 30 volunteer subjects performing six different activities. See References for more details on the source data[1]
 
-The resulting tidy dataset, "tidy_wearable_ordered.txt", represents only the mean() and std() features averaged by Activity and Subject.  The tidy data set has the following characteristics:
+The resulting tidy dataset, "tidy_wearable_ordered.txt", represents only the mean() and std() Features averaged by Activity and Subject.  The tidy data set has the following characteristics:
 
 1. 180 observations including 6 Activities performed by 30 Subjects.  Each observation is in it's own row.
-2. The average of 66 mean() and std() Features extracted from a total of 561 total features.
-3. Each feature is in it's own column with a human readable column name.
+2. The average of 66 mean() and std() Features extracted from a total of 561 total Features in the source data.
+3. Each Feature is in it's own column with a human readable column name.
 
-This dataset fully embodies the key requirements of a tidy dataset:
+This dataset fully embodies the requirements of a tidy dataset:
 
 1. Each Feature variable is in it's own column.
 2. Each average of the 180 observations is in it's own row.
-3. There is 1 table for the resulting feature averages.
+3. There is 1 table for the resulting Feature averages.
 4. There was no need for multiple tables, since the data is all of the same type.
 5. The table has a row at the top with the variable names.
 6. The variable names are human readable.
@@ -35,14 +35,16 @@ This dataset fully embodies the key requirements of a tidy dataset:
 ####Running the Code
 The following are the required steps to run the script:
 
-1. Install Install R 3.1.1 "Sock it to Me"
-2. Install RStudio 0.98.1062
-3. Open the "human-activity-recognition.Rproject"
-4. In the R Console, run source("run_analysis.R")
-5. The output will be a file in the project directory called, "tidy_wearable_ordered.txt"
+1. Download this Github repository: https://github.com/cmchenry/HumanActivityRecognition.git
+2. Install Install R 3.1.1 "Sock it to Me"
+3. Install RStudio 0.98.1062
+4. Open the "human-activity-recognition.Rproject"
+5. Obtain the "plyr" package by running `install.packages("plyr")` at the R Console.
+6. In the R Console, run `source("run_analysis.R")`
+7. The output will be a file in the project directory called, "tidy_wearable_ordered.txt"
 
 ####Tranformations a Create Tidy Dataset
-The following were the transformations of the source data to the resulting tidy dataset:
+The following were the transformations of the source data used to create the resulting tidy dataset:
 
 1. Loaded and combined source Subject data:
     * subject_test.txt
@@ -55,11 +57,11 @@ The following were the transformations of the source data to the resulting tidy 
     * X_train.txt
 4. Loaded Feature names data and filtered out only the mean() and std() features.  Also cleaned up feature names for human readable Feature column names.  NOTE: It was determined that only the mean() and std() features were required. The meanFreq() features represent the frequency components to obtain the mean() and thus are not features of interest for this tidy dataset:
     * features.txt
-5. Using the features in step #4, filtered the loaded Feature data created in step #3 to the required mean() and std() features.  Also added human readable column names to the features.
+5. Using the Feature indexes in step #4, filtered the loaded Feature data created in step #3 to the required mean() and std() features.  Also added human readable column names to the features.
 6. Loaded Activity Labels and joined them to the Activity data loaded in step #2.  Assigned a human readable column name to the activity data
     * activity_labels.txt
-7. Combined the columns of the cleaned Subject, Activity and Features dataset to create the raw tidy data.
-8. Summarized the dataset created in step #7, but calculating the mean of each feature, by Activity and Subject.  Sorted the data by Activity and Subject.
+7. Combined the columns of the transformed Subject, Activity and Features datasets to create the raw tidy data.
+8. Summarized the dataset created in step #7, but calculating the average of each feature, by Activity and by Subject.  Sorted the data by Activity and Subject for easy interpretation.
 9. Exported the summarized tidy dataset to the following file:
     * tidy_wearable_ordered.txt
     
